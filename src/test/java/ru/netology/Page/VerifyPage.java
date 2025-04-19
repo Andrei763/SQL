@@ -1,4 +1,4 @@
-package ru.netology.Page;
+package ru.netology.page;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.*;
@@ -36,9 +36,6 @@ public class VerifyPage {
                 should(text("Ошибка! " + "Неверно указан код! Попробуйте ещё раз."));
         errorButton.click();
         errorNotification.should(hidden);
-    }
-
-    public void emptyCode() {
         codeInputEmptyNotification.should(text("Поле обязательно для заполнения"));
     }
 }

@@ -1,4 +1,4 @@
-package ru.netology.Page;
+package ru.netology.page;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.*;
@@ -39,23 +39,13 @@ public class LoginPage {
         errorNotification.should(visible);
         errorNotification.$x(".//div[@class='notification__content']").
                 should(text("Ошибка! " + "Неверно указан логин или пароль"));
-        errorButton.click();
-        errorNotification.should(hidden);
-    }
-
-    public void blocked() {
-        errorNotification.should(visible);
         errorNotification.$x(".//div[@class='notification__content']").
                 should(text("Ошибка! " + "Пользователь заблокирован"));
         errorButton.click();
         errorNotification.should(hidden);
     }
-
     public void emptyLogin() {
         loginInputEmptyNotification.should(text("Поле обязательно для заполнения"));
-    }
-
-    public void emptyPassword() {
         passwordInputEmptyNotification.should(text("Поле обязательно для заполнения"));
     }
 }

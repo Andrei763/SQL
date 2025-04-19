@@ -1,12 +1,12 @@
-package ru.netology.Test;
+package ru.netology.test;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import ru.netology.Data.DataHelper;
-import ru.netology.Data.SQLHelper;
-import ru.netology.Page.LoginPage;
+import ru.netology.data.DataHelper;
+import ru.netology.data.SQLHelper;
+import ru.netology.page.LoginPage;
 
 import static com.codeborne.selenide.Selenide.open;
 import static org.testng.Assert.assertEquals;
@@ -101,7 +101,7 @@ public class AuthTest {
 
         open("http://localhost:9999/");
         loginPage.insert(user.getLogin(), user.getPassword());
-        loginPage.blocked();
+        loginPage.emptyLogin();
     }
 
     @Test(description = "Сообщение об пустом поле проверочного пароля")
@@ -109,13 +109,13 @@ public class AuthTest {
         loginPage.insert(user.getLogin(), user.getPassword());
         var verifyPage = loginPage.success();
         verifyPage.insert(null);
-        verifyPage.emptyCode();
+        verifyPage.failed();
     }
 
     @Test(description = "Сообщение об пустом поле пароля")
     public void shouldNotificationWithEmptyPassword() {
         loginPage.insert(user.getLogin(), null);
-        loginPage.emptyPassword();
+        loginPage.emptyLogin();
     }
 
     @Test(description = "Сообщение об пустом поле логина")
