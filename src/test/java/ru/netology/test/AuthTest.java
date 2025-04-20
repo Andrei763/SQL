@@ -1,4 +1,4 @@
-package ru.netology.Test;
+package ru.netology.test;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
